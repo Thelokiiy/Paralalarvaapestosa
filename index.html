@@ -5,34 +5,33 @@
 <style>
   body {
     display: flex;
-    flex-direction: column; /* Apila los elementos verticalmente */
+    flex-direction: column;
     justify-content: center;
-    align-items: center; /* Centra horizontalmente */
-    min-height: 100vh; /* Ocupa toda la altura de la ventana */
+    align-items: center;
+    min-height: 100vh;
     margin: 0;
     
-    /* Fondo con imagen de flores amarillas */
-    background-image: url('https://images.unsplash.com/photo-1651568773893-284763ed694f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmxvcmVzJTIwYW1hcmlsbGfFufDB8fDB8fHww'); /* URL de las flores para el fondo */
+    background-image: url('https://images.unsplash.com/photo-1651568773893-284763ed694f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmxvcmVzJTIwYW1hcmlsbGfFufDB8fDB8fHww');
     background-repeat: repeat;
     background-size: auto; 
     
     font-family: Arial, sans-serif;
     text-align: center;
-    color: #8b4513; /* Color de texto general */
-    position: relative; /* Necesario para posicionar los GIFs de forma absoluta */
+    color: #8b4513;
+    position: relative;
   }
   .message {
     font-size: 3em; 
     margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.7); /* Fondo semitransparente para el mensaje */
+    background-color: rgba(255, 255, 255, 0.7);
     padding: 15px 30px;
     border-radius: 10px;
   }
   .center-image {
-    width: 350px; /* Tamaño de la imagen central, puedes ajustarlo */
+    width: 350px;
     height: auto;
-    margin-top: 20px; /* Margen superior para separarlo del mensaje */
-    background-color: rgba(255, 255, 255, 0.7); /* Fondo semitransparente para la imagen */
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
     padding: 20px;
     border-radius: 15px;
   }
@@ -40,9 +39,9 @@
   /* Estilos para los GIFs en las esquinas */
   .corner-gif {
     position: absolute;
-    width: 80px; /* Tamaño de los GIFs, puedes ajustarlo */
+    width: 80px;
     height: auto;
-    z-index: 1000; /* Asegura que los GIFs estén por encima de otros elementos */
+    z-index: 1000;
   }
 
   .top-left {
@@ -64,9 +63,27 @@
     bottom: 10px;
     right: 10px;
   }
+
+  /* Estilos para el botón de música */
+  #playButton {
+    background-color: #8b4513; /* Color de botón */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 20px; /* Para separarlo del resto del contenido */
+    z-index: 1001; /* Asegura que esté por encima de otros elementos */
+  }
 </style>
 </head>
 <body>
+  <audio id="backgroundMusic" loop>
+    <source src="flores amarillas.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+  </audio>
+
   <div class="message">
     💛🌻 PARA TI LARVA APESTOSOLOROSA tq 🌻💛
   </div>
@@ -79,6 +96,16 @@
   <img src="https://i.gifer.com/origin/30/30f66d56833f21d0e620eff7f26e8280_w200.gif" alt="Bailando" class="corner-gif top-right">
   <img src="https://i.gifer.com/origin/30/30f66d56833f21d0e620eff7f26e8280_w200.gif" alt="Bailando" class="corner-gif bottom-left">
   <img src="https://i.gifer.com/origin/30/30f66d56833f21d0e620eff7f26e8280_w200.gif" alt="Bailando" class="corner-gif bottom-right">
-  
+
+  <!-- Botón para iniciar la música -->
+  <button id="playButton">Reproducir Música</button>
+
+  <script>
+    document.getElementById('playButton').addEventListener('click', function() {
+      var music = document.getElementById('backgroundMusic');
+      music.play();
+      this.style.display = 'none'; // Oculta el botón después de hacer clic
+    });
+  </script>
 </body>
 </html>
